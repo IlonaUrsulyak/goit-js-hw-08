@@ -12,10 +12,16 @@ savedText();
 
 function onFormSubmit(event) {
     event.preventDefault();
+
+    if (mail.value === "" || message.value === "") {
+    return 
+    }
+    
     console.log(`Email: ${mail.value}, Message: ${message.value}`);
     event.target.reset();
     localStorage.removeItem('email');
-    localStorage.removeItem('feedback-massege');
+    localStorage.removeItem('feedback-message');
+    
 }
 
 function onEmailInput(event) {
@@ -25,11 +31,11 @@ function onEmailInput(event) {
 
 function onTextMessageInput(event) {
     const message = event.target.value;
-    localStorage.setItem('feedback-massege', message);
+    localStorage.setItem('feedback-message', message);
 };
 
 function savedText() {
-    const savedMessage = localStorage.getItem('feedback-massege');
+    const savedMessage = localStorage.getItem('feedback-message');
     const savedEmail = localStorage.getItem('email');
 
     if (savedMessage) {
